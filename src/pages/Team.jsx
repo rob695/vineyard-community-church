@@ -84,7 +84,7 @@ export default function Team() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
+      <section className="relative h-[70vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac"
