@@ -85,10 +85,10 @@ export default function About() {
 
 
                 </p>
-                <p>
-                  From humble beginnings meeting in living rooms with just a handful of people, 
-                  we've grown into a vibrant community of believers who are passionate about 
-                  following Jesus and serving others.
+                <p className="">Our journey began in February of 2000 when a small team of 8 people were sent out from Birmingham Vineyard to realise their dream of growing a church where people could experience real life-transformation through the person and teaching of Jesus Christ. At that time, the church was led by Rob’s brother, Steve, and his wife Tammy. Rob & Ange took over leading VCC in September of 2003. From our humble beginnings meeting in living rooms with just a handful of people, we've grown into a lively community of believers of all ages who are passionate about following Jesus and serving others.
+
+
+
                 </p>
                 <p>
                   Today, we continue to be a church that believes in the power of authentic 
