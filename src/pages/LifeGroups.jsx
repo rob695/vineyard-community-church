@@ -161,7 +161,7 @@ export default function LifeGroups() {
               <p className="text-gray-500">No life groups available at the moment.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {groups.map((group, index) => (
                 <motion.div
                   key={group.id}
@@ -171,67 +171,67 @@ export default function LifeGroups() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
-                  {group.image_url && (
+                  {group.photo_url && (
                     <div className="h-48 overflow-hidden">
                       <img
-                        src={group.image_url}
-                        alt={group.name}
+                        src={group.photo_url}
+                        alt={group.title}
                         className="w-full h-full object-cover"
                       />
                     </div>
                   )}
                   
                   <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-[#1e3a5f] mb-4">{group.name}</h3>
+                    <h3 className="text-xl font-semibold text-[#1e3a5f] mb-3">{group.title}</h3>
                     
-                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
                       {group.description}
                     </p>
 
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
                         <Calendar className="w-4 h-4 text-[#d4a853]" />
-                        <span>{group.day}</span>
+                        <span>{group.day_of_week}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
                         <Clock className="w-4 h-4 text-[#d4a853]" />
                         <span>{group.time}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
                         <MapPin className="w-4 h-4 text-[#d4a853]" />
                         <span>{group.location}</span>
                       </div>
-                      {group.leader && (
-                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                      {group.leader_name && (
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Users className="w-4 h-4 text-[#d4a853]" />
-                          <span>{group.leader}</span>
+                          <span>{group.leader_name}</span>
                         </div>
                       )}
                       {group.leader_email && (
-                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Mail className="w-4 h-4 text-[#d4a853]" />
-                          <a href={`mailto:${group.leader_email}`} className="hover:text-[#d4a853]">
+                          <a href={`mailto:${group.leader_email}`} className="hover:text-[#d4a853] truncate">
                             {group.leader_email}
                           </a>
                         </div>
                       )}
-                      {group.max_members && (
-                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                      {group.max_signups && (
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Users className="w-4 h-4 text-[#d4a853]" />
-                          <span>{group.current_members || 0}/{group.max_members} members</span>
+                          <span>0/{group.max_signups} members</span>
                         </div>
                       )}
                     </div>
 
-                    {group.accepting_signups ? (
+                    {group.active ? (
                       <button
                         onClick={() => setSelectedGroup(group)}
-                        className="w-full py-3 bg-[#1e3a5f] hover:bg-[#2a4a6f] text-white font-semibold rounded-xl transition-all duration-300"
+                        className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
                       >
-                        Join This Group
+                        Login to Join
                       </button>
                     ) : (
-                      <div className="w-full py-3 bg-amber-50 text-amber-700 text-sm font-medium rounded-xl text-center">
+                      <div className="w-full py-3 bg-amber-50 text-amber-700 text-sm font-medium rounded-lg text-center">
                         Sign-ups are currently closed for this group
                       </div>
                     )}

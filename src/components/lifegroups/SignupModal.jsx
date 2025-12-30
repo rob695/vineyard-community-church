@@ -8,10 +8,8 @@ import { base44 } from "@/api/base44Client";
 
 export default function SignupModal({ group, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
-    phone: "",
-    message: "",
+    member_name: "",
+    member_email: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -22,6 +20,11 @@ export default function SignupModal({ group, onClose, onSuccess }) {
     try {
       const response = await base44.functions.invoke('submitLifeGroupSignup', {
         group_id: group.id,
+        group_title: group.title,
+        day_of_week: group.day_of_week,
+        time: group.time,
+        location: group.location,
+        leader_name: group.leader_name,
         ...formData,
       });
 
@@ -50,10 +53,10 @@ export default function SignupModal({ group, onClose, onSuccess }) {
         <div className="sticky top-0 bg-white border-b px-8 py-6 flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-light text-[#1e3a5f]">
-              Join <span className="text-[#d4a853]">{group.name}</span>
+              Join <span className="text-[#d4a853]">{group.title}</span>
             </h2>
             <p className="text-sm text-gray-500 mt-1">
-              {group.day} at {group.time}
+              {group.day_of_week} at {group.time}
             </p>
           </div>
           <button
@@ -68,12 +71,12 @@ export default function SignupModal({ group, onClose, onSuccess }) {
         <form onSubmit={handleSubmit} className="p-8 space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Full Name *
+              Your Name *
             </label>
             <Input
               type="text"
-              value={formData.full_name}
-              onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+              value={formData.member_name}
+              onChange={(e) => setFormData({ ...formData, member_name: e.target.value })}
               required
               placeholder="Your full name"
               className="h-12 rounded-xl"
@@ -86,36 +89,11 @@ export default function SignupModal({ group, onClose, onSuccess }) {
             </label>
             <Input
               type="email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              value={formData.member_email}
+              onChange={(e) => setFormData({ ...formData, member_email: e.target.value })}
               required
               placeholder="your.email@example.com"
               className="h-12 rounded-xl"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Phone Number
-            </label>
-            <Input
-              type="tel"
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              placeholder="Your phone number (optional)"
-              className="h-12 rounded-xl"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Message or Questions
-            </label>
-            <Textarea
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Any questions or things we should know?"
-              className="min-h-[100px] rounded-xl resize-none"
             />
           </div>
 
