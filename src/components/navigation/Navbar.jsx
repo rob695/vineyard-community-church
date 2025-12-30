@@ -53,15 +53,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to={createPageUrl("Home")} className="flex items-center gap-3">
-            <div className="flex flex-col items-center">
-              <span className="text-white font-light tracking-[0.3em] text-lg md:text-xl">
-                VINE<span className="text-[#d4a853]">Y</span>ARD
-              </span>
-              <span className="text-white/70 text-[10px] tracking-[0.2em]">COMMUNITY CHURCH</span>
-            </div>
-          </Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
