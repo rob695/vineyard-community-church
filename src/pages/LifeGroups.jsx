@@ -218,7 +218,7 @@ export default function LifeGroups() {
                       {group.max_signups && (
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Users className="w-4 h-4 text-[#d4a853]" />
-                          <span>0/{group.max_signups} members</span>
+                          <span>{group.current_members || 0}/{group.max_signups} members</span>
                         </div>
                       )}
                     </div>

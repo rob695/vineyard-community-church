@@ -12,7 +12,7 @@ Deno.serve(async (req) => {
         const parentApiKey = Deno.env.get("PARENT_PROJECT_API_KEY");
 
         // Fetch life groups from parent project
-        const response = await fetch(
+        const groupsResponse = await fetch(
             `https://app.base44.com/api/apps/${parentProjectId}/entities/LifeGroup`,
             {
                 headers: {
@@ -22,15 +22,41 @@ Deno.serve(async (req) => {
             }
         );
 
-        if (!response.ok) {
-            throw new Error(`Failed to fetch life groups: ${response.statusText}`);
+        if (!groupsResponse.ok) {
+            throw new Error(`Failed to fetch life groups: ${groupsResponse.statusText}`);
         }
 
-        const data = await response.json();
+        const groups = await groupsResponse.json();
+
+        // Fetch signups to count members per group
+        const signupsResponse = await fetch(
+            `https://app.base44.com/api/apps/${parentProjectId}/entities/LifeGroupSignup`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${parentApiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+
+        if (signupsResponse.ok) {
+            const signups = await signupsResponse.json();
+            
+            // Count signups per group
+            const signupCounts = {};
+            signups.forEach(signup => {
+                signupCounts[signup.group_id] = (signupCounts[signup.group_id] || 0) + 1;
+            });
+
+            // Add current_members count to each group
+            groups.forEach(group => {
+                group.current_members = signupCounts[group.id] || 0;
+            });
+        }
         
         return Response.json({ 
             success: true, 
-            groups: data 
+            groups: groups 
         });
 
     } catch (error) {
