@@ -225,7 +225,7 @@ export default function About() {
               <span className="text-[#d4a853] text-sm font-semibold tracking-widest uppercase mb-4 block">
               VINEYARD FAMILY
             </span>
-            <BR/>
+            <br/>
             <p className="text-gray-600">
                 We are part of the fast-growing family of churches called  Vineyard Churches UK & Ireland which, in turn, is part of a global movement of churches called Vineyard International. There are around 145 Vineyards in the UK and more than 2500 in 95 countries around the world.
               </p>
