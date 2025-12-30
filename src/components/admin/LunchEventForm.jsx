@@ -1,0 +1,105 @@
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { X } from "lucide-react";
+
+export default function LunchEventForm({ event, onSave, onCancel }) {
+  const [formData, setFormData] = useState(event || {
+    title: "Newcomers' Lunch",
+    date: "",
+    time: "12:30 PM",
+    location: "The Gee's Home",
+    description: "Join us for a relaxed lunch where you can meet the leadership team, ask questions, and get to know our church family better.",
+    is_active: true
+  });
+  const [saving, setSaving] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      await onSave(formData);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-2xl p-6 shadow-lg">
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl font-light text-[#1e3a5f]">
+          {event ? "Edit" : "Create"} Lunch Event
+        </h3>
+        <Button type="button" variant="ghost" size="icon" onClick={onCancel}>
+          <X className="w-5 h-5" />
+        </Button>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Event Title *</label>
+        <Input
+          value={formData.title}
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+          required
+          placeholder="Newcomers' Lunch"
+        />
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Date *</label>
+          <Input
+            type="date"
+            value={formData.date}
+            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Time *</label>
+          <Input
+            value={formData.time}
+            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+            required
+            placeholder="12:30 PM"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+        <Input
+          value={formData.location}
+          onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+          required
+          placeholder="The Gee's Home"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+        <Textarea
+          value={formData.description}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          required
+          rows={4}
+          placeholder="Event description..."
+        />
+      </div>
+
+      <div className="flex gap-3 justify-end">
+        <Button type="button" variant="outline" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button
+          type="submit"
+          disabled={saving}
+          className="bg-[#1e3a5f] hover:bg-[#2a4a6f]"
+        >
+          {saving ? "Saving..." : "Save Event"}
+        </Button>
+      </div>
+    </form>
+  );
+}
