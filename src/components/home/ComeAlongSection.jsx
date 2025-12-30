@@ -92,7 +92,7 @@ export default function ComeAlongSection() {
             </div>
             <div className="relative h-64 lg:h-auto">
               <img
-                src="https://images.unsplash.com/photo-1723473160682-48…xMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80"
                 alt="Church service"
                 className="w-full h-full object-cover"
               />
