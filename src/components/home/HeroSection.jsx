@@ -41,7 +41,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-[#d4a853] text-3xl md:text-5xl lg:text-6xl font-light italic mb-8"
+          className="text-[#d4a853] text-2xl md:text-3xl lg:text-4xl font-light italic mb-8"
         >
           "No perfect people allowed"
         </motion.h1>
