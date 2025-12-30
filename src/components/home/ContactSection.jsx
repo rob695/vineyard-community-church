@@ -151,16 +151,18 @@ export default function ContactSection() {
                   <Mail className="w-6 h-6 text-[#d4a853]" />
                 </div>
                 <h4 className="font-semibold text-[#1e3a5f] mb-2">Email</h4>
-                <a href="mailto:hello@vineyardcc.org" className="text-gray-600 text-sm hover:text-[#d4a853]">
-                  hello@vineyardcc.org
+                <a href="mailto:office@vineyardcommunity.org.uk" className="text-gray-600 text-sm hover:text-[#d4a853]">
+                  office@vineyardcommunity.org.uk
                 </a>
               </div>
             </div>
 
             {/* Map Placeholder */}
             <div className="rounded-2xl overflow-hidden shadow-lg h-64 bg-gray-200">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.3!2d-1.16!3d52.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDE1JzAwLjAiTiAxwrAwOSczNi4wIlc!5e0!3m2!1sen!2suk!4v1234567890"
+              
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d744.5073751858496!2d-1.1572502964433249!3d52.257511476893214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1767102773403!5m2!1sen!2suk"
+                
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
