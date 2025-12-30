@@ -51,7 +51,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
+        > <div style="padding-top:100px;">
           <a
             href="#welcome"
             className="px-8 py-4 bg-[#d4a853] text-[#1e3a5f] font-semibold rounded-full hover:bg-[#e5b964] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -63,7 +63,7 @@ export default function HeroSection() {
             className="px-8 py-4 border-2 border-white/30 text-white rounded-full hover:bg-white/10 transition-all duration-300"
           >
             Visit Us
-          </a>
+          </a></div>
         </motion.div>
       </div>
 
