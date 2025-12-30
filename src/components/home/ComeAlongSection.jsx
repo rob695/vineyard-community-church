@@ -76,7 +76,7 @@ export default function ComeAlongSection() {
           <div className="grid lg:grid-cols-2">
             <div className="p-10 md:p-16 flex flex-col justify-center">
               <h3 className="text-3xl md:text-4xl font-light text-white mb-6">
-                Our desire is that Vineyard would be a 
+                Our desire is that the Vineyard would be a 
                 <span className="text-[#d4a853]"> safe and accepting</span> place.
               </h3>
               <p className="text-white/70 mb-8 leading-relaxed">
