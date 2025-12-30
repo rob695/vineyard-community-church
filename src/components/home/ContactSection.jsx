@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -154,6 +154,18 @@ export default function ContactSection() {
                 <a href="mailto:office@vineyardcommunity.org.uk" className="text-gray-600 text-sm hover:text-[#d4a853]">
                   office@vineyardcommunity.org.uk
                 </a>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-6 sm:col-span-2">
+                <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center mb-4">
+                  <Building2 className="w-6 h-6 text-[#d4a853]" />
+                </div>
+                <h4 className="font-semibold text-[#1e3a5f] mb-2">Meeting Location</h4>
+                <p className="text-gray-600 text-sm">
+                  The Abbey CE Academy<br />
+                  Vicar Lane<br />
+                  Daventry<br />
+                  NN11 4GD
+                </p>
               </div>
             </div>
 
