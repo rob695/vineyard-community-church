@@ -54,8 +54,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
-
-
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item, index) => (
@@ -103,6 +101,11 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* Admin Login/Logout */}
+          <div className="hidden lg:block ml-auto">
+            <AdminAuthButton />
           </div>
 
           {/* Mobile Menu Button */}
