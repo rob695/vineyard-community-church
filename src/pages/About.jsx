@@ -209,7 +209,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-1 max-w-4xl mx-auto">
                           <p className="text-gray-600">
                 We are here in Daventry to gather and grow “Everyday people who are called to extend God’s Kingdom, love and life to our communities by following the person and the ‘Way’ of Jesus Christ”
               </p>
