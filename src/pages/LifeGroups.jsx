@@ -226,7 +226,7 @@ export default function LifeGroups() {
                                   {group.current_members || 0}/{group.max_signups} members
                                 </span>
                               </TooltipTrigger>
-                              <TooltipContent className="max-w-xs">
+                              <TooltipContent className="max-w-xs bg-white text-gray-900 border border-gray-200 shadow-lg">
                                 {group.members && group.members.length > 0 ? (
                                   <div className="space-y-1">
                                     <p className="font-semibold mb-2">Current Members:</p>
