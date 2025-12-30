@@ -65,14 +65,18 @@ export default function LifeGroups() {
           >
             Connect
           </motion.span>
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-light text-white mb-6"
+            className="mb-6"
           >
-            Life Groups
-          </motion.h1>
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/f50d86e0f_life_groups_logo.png"
+              alt="Life Groups"
+              className="w-[250px] mx-auto"
+            />
+          </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
