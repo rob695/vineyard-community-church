@@ -212,7 +212,7 @@ export default function About() {
           <div className="grid sm:grid-cols-1 max-w-4xl mx-auto">
               <p className="text-gray-600">
                 We are here in Daventry to gather and grow “Everyday people who are called to extend God’s Kingdom, love and life to our communities by following the person and the ‘Way’ of Jesus Christ”
-              </p>
+              </p><br/>
               <p className="text-gray-600">
                 While he was on the earth, Jesus established his Church - a band of followers who would participate in his mission. And the beautiful thing is, he didn't go out to select those who are the strongest, the fastest and the most professional to play their part in that. He chose the weak and the weary; the last, the least and the lost. Its' the faceless nobodies who God partners with in order to outwork his mission for this world. Defining his mission, Jesus said that God had sent him in to this world to bring Good News to the poor, freedom for the captives, healing for the sick and relief for those who are oppressed.
               </p>
