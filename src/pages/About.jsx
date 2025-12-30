@@ -301,8 +301,8 @@ export default function About() {
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=800&q=80"
-                  alt="Worship"
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/7fa974bdb_Vineyard_Global.jpg"
+                  alt="Vineyard Global Movement"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
