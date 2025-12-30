@@ -212,54 +212,7 @@ export default function About() {
           </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">The Bible</h3>
-              <p className="text-gray-600">
-                We believe the Bible is God's inspired Word, the authoritative guide for faith and life.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">Jesus Christ</h3>
-              <p className="text-gray-600">
-                We believe Jesus is the Son of God who lived, died, and rose again to offer salvation to all.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">The Holy Spirit</h3>
-              <p className="text-gray-600">
-                We believe in the present ministry of the Holy Spirit who empowers believers for life and service.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">The Church</h3>
-              <p className="text-gray-600">
-                We believe the church is the body of Christ, called to worship, grow, and serve together.
-              </p>
-            </motion.div>
+            
           </div>
         </div>
       </section>
