@@ -114,7 +114,7 @@ export default function NewcomersLunch() {
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1920&q=80"
+            src="src="https://images.unsplash.com/photo-1557962048-0dc2a719e2d7""
             alt="Newcomers lunch"
             className="w-full h-full object-cover"
           />
