@@ -32,7 +32,8 @@ Deno.serve(async (req) => {
                     group_id,
                     group_title,
                     member_name,
-                    member_email
+                    member_email,
+                    member_id: Math.floor(1000 + Math.random() * 9000).toString()
                 })
             }
         );
