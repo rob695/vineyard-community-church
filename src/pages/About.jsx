@@ -107,8 +107,8 @@ export default function About() {
 
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&q=80"
-                  alt="Church gathering"
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/7bdc42aee_rob_and_ange.jpg"
+                  alt="Rob and Ange Gee"
                   className="w-full h-[500px] object-cover" />
 
               </div>
