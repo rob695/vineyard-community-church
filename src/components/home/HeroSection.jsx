@@ -35,6 +35,8 @@ export default function HeroSection() {
             alt="Vineyard Community Church"
             className="w-[200px] md:w-[300px] mx-auto"
           />
+          <div class="h-px w-32 bg-gradient-to-r from-transparent via-[#d4a853] to-transparent mx-auto my-4"></div>
+          <span class="text-white/80 text-sm tracking-[0.3em]">COMMUNITY CHURCH</span>
         </motion.div>
 
         <motion.h1
