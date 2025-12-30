@@ -11,12 +11,13 @@ export default function Footer() {
           {/* Logo & About */}
           <div>
             <div className="mb-6">
-            <img
+            
+              <span className="text-white font-light tracking-[0.3em] text-xl">
+              <img
             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/8e41f6db6_VineyardLogo1.png"
             alt="Vineyard Community Church"
             className="w-[150px] md:w-[150px] mx-auto"
           />
-              <span className="text-white font-light tracking-[0.3em] text-xl">
                 VINE<span className="text-[#d4a853]">Y</span>ARD
               </span>
               <p className="text-white/50 text-xs tracking-[0.2em] mt-1">COMMUNITY CHURCH</p>
