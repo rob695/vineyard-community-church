@@ -14,8 +14,7 @@ export default function Footer() {
             <img
             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/8e41f6db6_VineyardLogo1.png"
             alt="Vineyard Community Church"
-            margin-left="-100px"
-            className="w-[150px] md:w-[150px] mx-auto"
+            className="w-[150px] md:w-[150px]"
           />
               <span className="text-white font-light tracking-[0.3em] text-xl">
               
