@@ -201,7 +201,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <span className="text-[#d4a853] text-sm font-semibold tracking-widest uppercase mb-4 block">
-              Our Beliefs
+              WHAT DRIVES US
             </span>
             <h2 className="text-3xl md:text-4xl font-light text-[#1e3a5f] mb-6">
               OUR PURPOSE
@@ -228,7 +228,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <span className="text-[#d4a853] text-sm font-semibold tracking-widest uppercase mb-4 block">
-              What Drives Us
+              What shapes how it looks
             </span>
             <h2 className="text-3xl md:text-4xl font-light text-[#1e3a5f] mb-6">
               Our Values
