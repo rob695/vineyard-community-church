@@ -1,8 +1,11 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Users, Heart, BookOpen, MessageCircle, ArrowRight } from "lucide-react";
+import { Users, Heart, BookOpen, MessageCircle, ArrowRight, Calendar, Clock, MapPin, Mail, UserCheck } from "lucide-react";
+import { base44 } from "@/api/base44Client";
+import { useQuery } from "@tanstack/react-query";
+import SignupModal from "@/components/lifegroups/SignupModal";
 
 const benefits = [
   {
@@ -27,52 +30,19 @@ const benefits = [
   },
 ];
 
-const groups = [
-  {
-    name: "Young Adults",
-    day: "Tuesdays",
-    time: "7:30 PM",
-    location: "Various homes",
-    description: "For those in their 20s and 30s navigating life, faith, and everything in between.",
-  },
-  {
-    name: "Couples",
-    day: "Wednesdays",
-    time: "7:00 PM",
-    location: "Church building",
-    description: "Grow together as couples while building friendships with others.",
-  },
-  {
-    name: "Women's Group",
-    day: "Thursdays",
-    time: "10:00 AM",
-    location: "Various homes",
-    description: "A supportive community for women to connect, grow, and encourage one another.",
-  },
-  {
-    name: "Men's Group",
-    day: "Saturdays",
-    time: "8:00 AM",
-    location: "Local café",
-    description: "Brotherhood, accountability, and growth for men of all ages.",
-  },
-  {
-    name: "Mixed Group",
-    day: "Thursdays",
-    time: "7:30 PM",
-    location: "Various homes",
-    description: "Open to everyone – individuals, couples, families. All welcome!",
-  },
-  {
-    name: "Seniors",
-    day: "Wednesdays",
-    time: "2:00 PM",
-    location: "Church building",
-    description: "Fellowship, study, and friendship for our older members.",
-  },
-];
-
 export default function LifeGroups() {
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const [signupSuccess, setSignupSuccess] = useState(false);
+
+  const { data: groupsData, isLoading } = useQuery({
+    queryKey: ['lifeGroups'],
+    queryFn: async () => {
+      const response = await base44.functions.invoke('getLifeGroups');
+      return response.data.groups || [];
+    },
+  });
+
+  const groups = groupsData || [];
   return (
     <div>
       {/* Hero Section */}
@@ -182,27 +152,94 @@ export default function LifeGroups() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {groups.map((group, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">{group.name}</h3>
-                <div className="space-y-2 mb-4">
-                  <p className="text-sm text-gray-500">
-                    <span className="font-medium text-gray-700">{group.day}</span> at {group.time}
-                  </p>
-                  <p className="text-sm text-gray-500">{group.location}</p>
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed">{group.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500">Loading groups...</p>
+            </div>
+          ) : groups.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No life groups available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-8">
+              {groups.map((group, index) => (
+                <motion.div
+                  key={group.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                >
+                  {group.image_url && (
+                    <div className="h-48 overflow-hidden">
+                      <img
+                        src={group.image_url}
+                        alt={group.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  
+                  <div className="p-6">
+                    <h3 className="text-2xl font-semibold text-[#1e3a5f] mb-4">{group.name}</h3>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                      {group.description}
+                    </p>
+
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                        <Calendar className="w-4 h-4 text-[#d4a853]" />
+                        <span>{group.day}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                        <Clock className="w-4 h-4 text-[#d4a853]" />
+                        <span>{group.time}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                        <MapPin className="w-4 h-4 text-[#d4a853]" />
+                        <span>{group.location}</span>
+                      </div>
+                      {group.leader && (
+                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                          <Users className="w-4 h-4 text-[#d4a853]" />
+                          <span>{group.leader}</span>
+                        </div>
+                      )}
+                      {group.leader_email && (
+                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                          <Mail className="w-4 h-4 text-[#d4a853]" />
+                          <a href={`mailto:${group.leader_email}`} className="hover:text-[#d4a853]">
+                            {group.leader_email}
+                          </a>
+                        </div>
+                      )}
+                      {group.max_members && (
+                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                          <Users className="w-4 h-4 text-[#d4a853]" />
+                          <span>{group.current_members || 0}/{group.max_members} members</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {group.accepting_signups ? (
+                      <button
+                        onClick={() => setSelectedGroup(group)}
+                        className="w-full py-3 bg-[#1e3a5f] hover:bg-[#2a4a6f] text-white font-semibold rounded-xl transition-all duration-300"
+                      >
+                        Join This Group
+                      </button>
+                    ) : (
+                      <div className="w-full py-3 bg-amber-50 text-amber-700 text-sm font-medium rounded-xl text-center">
+                        Sign-ups are currently closed for this group
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -231,6 +268,48 @@ export default function LifeGroups() {
           </motion.div>
         </div>
       </section>
+
+      {/* Signup Modal */}
+      <AnimatePresence>
+        {selectedGroup && (
+          <SignupModal
+            group={selectedGroup}
+            onClose={() => setSelectedGroup(null)}
+            onSuccess={() => {
+              setSelectedGroup(null);
+              setSignupSuccess(true);
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Success Message */}
+      <AnimatePresence>
+        {signupSuccess && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="bg-white rounded-2xl p-8 max-w-md text-center"
+            >
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <UserCheck className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-light text-[#1e3a5f] mb-2">You're Signed Up!</h3>
+              <p className="text-gray-600 mb-6">
+                Thank you for joining! The group leader will be in touch with you soon.
+              </p>
+              <button
+                onClick={() => setSignupSuccess(false)}
+                className="px-8 py-3 bg-[#1e3a5f] hover:bg-[#2a4a6f] text-white font-semibold rounded-xl transition-all duration-300"
+              >
+                Close
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
