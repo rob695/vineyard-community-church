@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Users, Heart, BookOpen, MessageCircle, ArrowRight, Calendar, Clock, MapPin, Mail, UserCheck } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import SignupModal from "@/components/lifegroups/SignupModal";
@@ -218,7 +219,27 @@ export default function LifeGroups() {
                       {group.max_signups && (
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Users className="w-4 h-4 text-[#d4a853]" />
-                          <span>{group.current_members || 0}/{group.max_signups} members</span>
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <span className="cursor-pointer hover:text-[#d4a853] transition-colors">
+                                  {group.current_members || 0}/{group.max_signups} members
+                                </span>
+                              </TooltipTrigger>
+                              <TooltipContent className="max-w-xs">
+                                {group.members && group.members.length > 0 ? (
+                                  <div className="space-y-1">
+                                    <p className="font-semibold mb-2">Current Members:</p>
+                                    {group.members.map((member, idx) => (
+                                      <p key={idx} className="text-sm">• {member.name}</p>
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <p>No members yet</p>
+                                )}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         </div>
                       )}
                     </div>

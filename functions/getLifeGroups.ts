@@ -42,15 +42,23 @@ Deno.serve(async (req) => {
         if (signupsResponse.ok) {
             const signups = await signupsResponse.json();
             
-            // Count signups per group
-            const signupCounts = {};
+            // Group signups by group_id with member details
+            const signupsByGroup = {};
             signups.forEach(signup => {
-                signupCounts[signup.group_id] = (signupCounts[signup.group_id] || 0) + 1;
+                if (!signupsByGroup[signup.group_id]) {
+                    signupsByGroup[signup.group_id] = [];
+                }
+                signupsByGroup[signup.group_id].push({
+                    name: signup.member_name,
+                    email: signup.member_email
+                });
             });
 
-            // Add current_members count to each group
+            // Add current_members count and member list to each group
             groups.forEach(group => {
-                group.current_members = signupCounts[group.id] || 0;
+                const members = signupsByGroup[group.id] || [];
+                group.current_members = members.length;
+                group.members = members;
             });
         }
         
