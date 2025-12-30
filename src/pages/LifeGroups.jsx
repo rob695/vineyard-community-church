@@ -273,17 +273,8 @@ export default function LifeGroups() {
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
               Ready to <span className="text-[#d4a853]">connect</span>?
             </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Getting connected to a Life Group is easy. Reach out and we'll help 
-              you find the perfect group for your season of life.
-            </p>
-            <Link
-              to={createPageUrl("Contact")}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#d4a853] text-[#1e3a5f] font-semibold rounded-full hover:bg-[#e5b964] transition-all duration-300"
-            >
-              Join a Group
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+
+
           </motion.div>
         </div>
       </section>
