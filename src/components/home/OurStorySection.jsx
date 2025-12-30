@@ -27,12 +27,11 @@ export default function OurStorySection() {
               How it all began
             </h2>
             <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              Vineyard Community Church is led by our founding pastors who have lived in our 
-              community for many years. Our journey began with a simple vision: to create a 
-              place where anyone could come and experience God's love.
+              Vineyard Community Church is led by Rob & Ange Gee. Both have lived in Daventry for many years – in fact, Rob was born here! Our journey began back in February of 2000 with a simple vision: to create a 
+              place where anyone could come and encounter God's love.
             </p>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              From humble beginnings meeting in living rooms, we've grown into a vibrant 
+              From humble beginnings meeting in living rooms, we've grown into a lively 
               community that continues to impact lives and serve our neighborhood with the 
               love of Jesus.
             </p>
