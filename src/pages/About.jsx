@@ -191,6 +191,80 @@ export default function About() {
         </div>
       </section>
 
+      {/* Our Purpose */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-[#d4a853] text-sm font-semibold tracking-widest uppercase mb-4 block">
+              Our Beliefs
+            </span>
+            <h2 className="text-3xl md:text-4xl font-light text-[#1e3a5f] mb-6">
+              OUR PURPOSE
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              At the core of who we are, these beliefs shape everything we do.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">The Bible</h3>
+              <p className="text-gray-600">
+                We believe the Bible is God's inspired Word, the authoritative guide for faith and life.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">Jesus Christ</h3>
+              <p className="text-gray-600">
+                We believe Jesus is the Son of God who lived, died, and rose again to offer salvation to all.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">The Holy Spirit</h3>
+              <p className="text-gray-600">
+                We believe in the present ministry of the Holy Spirit who empowers believers for life and service.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-xl font-semibold text-[#1e3a5f] mb-4">The Church</h3>
+              <p className="text-gray-600">
+                We believe the church is the body of Christ, called to worship, grow, and serve together.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
       {/* Our Values */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
