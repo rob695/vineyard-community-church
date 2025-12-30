@@ -217,7 +217,7 @@ export default function About() {
               <p className="text-gray-600">
                 While he was on the earth, Jesus established his Church - a band of followers who would participate in his mission. And the beautiful thing is, he didn't go out to select those who are the strongest, the fastest and the most professional to play their part in that. He chose the weak and the weary; the last, the least and the lost. Its' the faceless nobodies who God partners with in order to outwork his mission for this world. Defining his mission, Jesus said that God had sent him in to this world to bring Good News to the poor, freedom for the captives, healing for the sick and relief for those who are oppressed.
               </p>
-              <br/>
+              <br>
               <p className="text-gray-600">
                 So, we believe that our purpose is to embody that message in the context of contemporary culture; to those who live around us. In essence, we are not only to be communicators but also demonstrators of God’s limitless love and grace to the world.
               </p>
@@ -225,7 +225,7 @@ export default function About() {
               <span className="text-[#d4a853] text-sm font-semibold tracking-widest uppercase mb-4 block">
               VINEYARD FAMILY
             </span>
-            <br/>
+            <BR/>
             <p className="text-gray-600">
                 We are part of the fast-growing family of churches called  Vineyard Churches UK & Ireland which, in turn, is part of a global movement of churches called Vineyard International. There are around 145 Vineyards in the UK and more than 2500 in 95 countries around the world.
               </p>
