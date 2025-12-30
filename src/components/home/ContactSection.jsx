@@ -142,8 +142,8 @@ export default function ContactSection() {
                   <Phone className="w-6 h-6 text-[#d4a853]" />
                 </div>
                 <h4 className="font-semibold text-[#1e3a5f] mb-2">Phone</h4>
-                <a href="tel:01234567890" className="text-gray-600 text-sm hover:text-[#d4a853]">
-                  01234 567890
+                <a href="tel:01327 577850" className="text-gray-600 text-sm hover:text-[#d4a853]">
+                  01327 577850
                 </a>
               </div>
               <div className="bg-gray-50 rounded-2xl p-6">
