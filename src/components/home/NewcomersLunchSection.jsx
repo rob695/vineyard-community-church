@@ -23,7 +23,7 @@ export default function NewcomersLunchSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&q=80"
+                src="https://images.unsplash.com/photo-1557962048-0dc2a719e2d7"
                 alt="People sharing a meal"
                 className="w-full h-[450px] object-cover"
               />
