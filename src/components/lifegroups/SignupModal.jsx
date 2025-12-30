@@ -31,11 +31,12 @@ export default function SignupModal({ group, onClose, onSuccess }) {
       if (response.data.success) {
         onSuccess();
       } else {
-        alert('Failed to submit signup. Please try again.');
+        alert(`Failed to submit signup: ${response.data.error || 'Please try again.'}`);
       }
     } catch (error) {
       console.error('Signup error:', error);
-      alert('An error occurred. Please try again.');
+      const errorMsg = error.response?.data?.error || error.message || 'Unknown error';
+      alert(`An error occurred: ${errorMsg}`);
     } finally {
       setIsSubmitting(false);
     }
