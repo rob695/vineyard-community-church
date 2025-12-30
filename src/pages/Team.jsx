@@ -87,7 +87,7 @@ export default function Team() {
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac"
             alt="Team"
             className="w-full h-full object-cover"
           />
