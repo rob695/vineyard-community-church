@@ -228,7 +228,7 @@ export default function LifeGroups() {
                         onClick={() => setSelectedGroup(group)}
                         className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
                       >
-                        Login to Join
+                        Join Group
                       </button>
                     ) : (
                       <div className="w-full py-3 bg-amber-50 text-amber-700 text-sm font-medium rounded-lg text-center">
