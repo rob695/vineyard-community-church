@@ -208,7 +208,7 @@ export default function About() {
               At the core of who we are, these beliefs shape everything we do.
             </p>
           </motion.div>
-          
+
           <div className="grid sm:grid-cols-1 max-w-4xl mx-auto">
               <p className="text-gray-600">
                 We are here in Daventry to gather and grow “Everyday people who are called to extend God’s Kingdom, love and life to our communities by following the person and the ‘Way’ of Jesus Christ”
@@ -220,13 +220,6 @@ export default function About() {
               <br/>
               <p className="text-gray-600">
                 So, we believe that our purpose is to embody that message in the context of contemporary culture; to those who live around us. In essence, we are not only to be communicators but also demonstrators of God’s limitless love and grace to the world.
-              </p>
-              <br/>
-              <span className="text-[#d4a853] text-sm font-semibold tracking-widest uppercase mb-4 block">
-              VINEYARD FAMILY
-            </span>
-            <p className="text-gray-600">
-                We are part of the fast-growing family of churches called  Vineyard Churches UK & Ireland which, in turn, is part of a global movement of churches called Vineyard International. There are around 145 Vineyards in the UK and more than 2500 in 95 countries around the world.
               </p>
 
 
