@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { X } from "lucide-react";
+import { X, Upload, Image as ImageIcon } from "lucide-react";
+import { base44 } from "@/api/base44Client";
 
 export default function LunchEventForm({ event, onSave, onCancel }) {
   const [formData, setFormData] = useState(event || {
@@ -11,9 +12,11 @@ export default function LunchEventForm({ event, onSave, onCancel }) {
     time: "12:30 PM",
     location: "The Gee's Home",
     description: "Join us for a relaxed lunch where you can meet the leadership team, ask questions, and get to know our church family better.",
+    image_url: "",
     is_active: true
   });
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +25,21 @@ export default function LunchEventForm({ event, onSave, onCancel }) {
       await onSave(formData);
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const { file_url } = await base44.integrations.Core.UploadFile({ file });
+      setFormData({ ...formData, image_url: file_url });
+    } catch (error) {
+      alert("Failed to upload image");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -86,6 +104,63 @@ export default function LunchEventForm({ event, onSave, onCancel }) {
           rows={4}
           placeholder="Event description..."
         />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Event Image</label>
+        <div className="space-y-4">
+          {formData.image_url && (
+            <div className="relative w-full h-48 rounded-xl overflow-hidden">
+              <img
+                src={formData.image_url}
+                alt="Event preview"
+                className="w-full h-full object-cover"
+              />
+              <Button
+                type="button"
+                size="sm"
+                variant="destructive"
+                className="absolute top-2 right-2"
+                onClick={() => setFormData({ ...formData, image_url: "" })}
+              >
+                <X className="w-4 h-4" />
+              </Button>
+            </div>
+          )}
+          <div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="hidden"
+              id="event-image-upload"
+              disabled={uploading}
+            />
+            <label htmlFor="event-image-upload">
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                disabled={uploading}
+                asChild
+              >
+                <span className="flex items-center gap-2 cursor-pointer">
+                  {uploading ? (
+                    <>
+                      <Upload className="w-4 h-4 animate-spin" />
+                      Uploading...
+                    </>
+                  ) : (
+                    <>
+                      <ImageIcon className="w-4 h-4" />
+                      {formData.image_url ? "Change Image" : "Upload Image"}
+                    </>
+                  )}
+                </span>
+              </Button>
+            </label>
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-3 justify-end">

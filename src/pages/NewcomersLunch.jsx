@@ -314,7 +314,7 @@ export default function NewcomersLunch() {
                 </div>
                 <div className="relative h-64 md:h-auto">
                   <img
-                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"
+                    src={activeEvent.image_url || "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"}
                     alt="Food"
                     className="w-full h-full object-cover"
                   />
