@@ -30,11 +30,11 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-8"
         >
-          <span className="text-white font-light tracking-[0.4em] text-2xl md:text-4xl">
-            VINE<span className="text-[#d4a853]">Y</span>ARD
-          </span>
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-[#d4a853] to-transparent mx-auto my-4" />
-          <span className="text-white/80 text-sm tracking-[0.3em]">COMMUNITY CHURCH</span>
+          <img
+            src="/Vineyard Logo 1.png"
+            alt="Vineyard Community Church"
+            className="w-[200px] md:w-[300px] mx-auto"
+          />
         </motion.div>
 
         <motion.h1
