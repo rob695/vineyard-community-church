@@ -26,7 +26,7 @@ export default function WelcomeSection() {
             </h2>
             <div className="space-y-6 text-gray-600 leading-relaxed">
               <p>
-                Vineyard Community Church is a relatively new church who are always seeking fresh 
+                Vineyard Community Church is a welcoming community where everyone belongs. We are always seeking fresh 
                 ways to engage with our culture and to faithfully embody Jesus' life-changing 
                 message of a glorious new "way" to live.
               </p>
