@@ -1,27 +1,27 @@
-import Home from './pages/Home';
 import About from './pages/About';
-import Team from './pages/Team';
-import Sunday from './pages/Sunday';
-import LifeGroups from './pages/LifeGroups';
+import CommunityOutreach from './pages/CommunityOutreach';
 import Contact from './pages/Contact';
 import Events from './pages/Events';
-import NewcomersLunch from './pages/NewcomersLunch';
+import Home from './pages/Home';
 import KindnessProjects from './pages/KindnessProjects';
-import CommunityOutreach from './pages/CommunityOutreach';
+import LifeGroups from './pages/LifeGroups';
+import NewcomersLunch from './pages/NewcomersLunch';
+import Sunday from './pages/Sunday';
+import Team from './pages/Team';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Home": Home,
     "About": About,
-    "Team": Team,
-    "Sunday": Sunday,
-    "LifeGroups": LifeGroups,
+    "CommunityOutreach": CommunityOutreach,
     "Contact": Contact,
     "Events": Events,
-    "NewcomersLunch": NewcomersLunch,
+    "Home": Home,
     "KindnessProjects": KindnessProjects,
-    "CommunityOutreach": CommunityOutreach,
+    "LifeGroups": LifeGroups,
+    "NewcomersLunch": NewcomersLunch,
+    "Sunday": Sunday,
+    "Team": Team,
 }
 
 export const pagesConfig = {
