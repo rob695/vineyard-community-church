@@ -46,16 +46,6 @@ export default function HeroSection() {
           "No perfect people allowed"
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed"
-        >
-          A welcoming community where everyone belongs, 
-          seeking fresh ways to embody Jesus' life-changing message.
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
