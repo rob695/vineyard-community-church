@@ -148,9 +148,7 @@ export default function LifeGroups() {
             <h2 className="text-3xl md:text-4xl font-light text-[#1e3a5f] mb-6">
               Current Life Groups
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              We have groups for every stage of life. Find the one that's right for you.
-            </p>
+
           </motion.div>
 
           {isLoading ? (
