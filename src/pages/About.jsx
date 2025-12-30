@@ -133,9 +133,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-light text-[#1e3a5f] mb-6">
               What We Believe
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              At the core of who we are, these beliefs shape everything we do.
-            </p>
+
           </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
