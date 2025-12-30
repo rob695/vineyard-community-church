@@ -28,7 +28,7 @@ export default function WelcomeSection() {
               <p>
                 Vineyard Community Church is a welcoming community where everyone belongs. We are always seeking fresh 
                 ways to engage with our culture and to faithfully embody Jesus' life-changing 
-                message of a glorious new "way" to live.
+                message.
               </p>
               <p>
                 Here at the Vineyard, we foster a <span className="text-[#1e3a5f] font-medium">"come as you are"</span> culture 
