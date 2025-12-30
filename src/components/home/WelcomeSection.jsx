@@ -25,18 +25,19 @@ export default function WelcomeSection() {
               <span className="block font-normal">stopped by!</span>
             </h2>
             <div className="space-y-6 text-gray-600 leading-relaxed">
-              <p>
-                Vineyard Community Church is a welcoming community where everyone belongs. We are always seeking fresh 
-                ways to engage with our culture and to faithfully embody Jesus' life-changing 
-                message.
-              </p>
-              <p>
+                          <p>
                 Here at the Vineyard, we foster a <span className="text-[#1e3a5f] font-medium">"come as you are"</span> culture 
                 where <span className="text-[#d4a853] font-semibold">EVERYONE</span> is <span className="text-[#d4a853] font-semibold">WELCOME</span> to 
                 come and <span className="text-[#d4a853] font-semibold">BELONG</span>; that's everyone regardless of their age, 
                 gender, nationality, education, employment status, social or political standing, 
                 race, religion or background.
               </p>
+              <p>
+                We are always seeking fresh 
+                ways to engage with our culture and to faithfully embody Jesus' life-changing 
+                message.
+              </p>
+
             </div>
           </motion.div>
 
