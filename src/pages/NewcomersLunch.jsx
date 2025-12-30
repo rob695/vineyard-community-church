@@ -193,7 +193,7 @@ export default function NewcomersLunch() {
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/47f7dd183_brunch.png"
                   alt="Lunch gathering"
                   className="w-full h-[500px] object-cover"
                 />
