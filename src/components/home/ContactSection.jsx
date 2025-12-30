@@ -120,7 +120,7 @@ export default function ContactSection() {
                 <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center mb-4">
                   <MapPin className="w-6 h-6 text-[#d4a853]" />
                 </div>
-                <h4 className="font-semibold text-[#1e3a5f] mb-2">Address</h4>
+                <h4 className="font-semibold text-[#1e3a5f] mb-2">Office Address</h4>
                 <p className="text-gray-600 text-sm">
                   18A Benbow Close<br />
                   Daventry, Northants<br />
