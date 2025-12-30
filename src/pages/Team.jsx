@@ -1,51 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Plus, Pencil, Trash2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import TeamMemberForm from "@/components/team/TeamMemberForm";
-import { Button } from "@/components/ui/button";
+import { Mail } from "lucide-react";
+
+const teamMembers = [
+  {
+    name: "Rob & Angela Gee",
+    role: "Senior Pastors",
+    image: "https://images.unsplash.com/photo-1560439514-4e9645039924?w=400&q=80",
+    bio: "Rob and Angela have been leading Vineyard Community Church since its founding. Their passion is to see people discover the love of God and find their place in His family.",
+  },
+  {
+    name: "David Thompson",
+    role: "Worship Pastor",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    bio: "David leads our worship ministry with a heart for creating space where people can encounter God's presence through music and song.",
+  },
+  {
+    name: "Sarah Mitchell",
+    role: "Youth & Kids Director",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    bio: "Sarah oversees our ministry to children and young people, helping the next generation discover their faith and grow in their relationship with Jesus.",
+  },
+  {
+    name: "James Wilson",
+    role: "Community Outreach",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    bio: "James coordinates our community initiatives, ensuring we're actively serving and making a positive impact in our local area.",
+  },
+  {
+    name: "Emma Roberts",
+    role: "Life Groups Coordinator",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+    bio: "Emma helps connect people to our Life Groups, fostering community and spiritual growth through smaller gatherings.",
+  },
+  {
+    name: "Michael Chen",
+    role: "Operations Manager",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+    bio: "Michael ensures everything runs smoothly behind the scenes, managing facilities, finance, and administration.",
+  },
+];
 
 export default function Team() {
-  const [user, setUser] = useState(null);
-  const [showForm, setShowForm] = useState(false);
-  const [editingMember, setEditingMember] = useState(null);
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    base44.auth.me().then(setUser).catch(() => setUser(null));
-  }, []);
-
-  const { data: teamMembers = [] } = useQuery({
-    queryKey: ["teamMembers"],
-    queryFn: () => base44.entities.TeamMember.list("order", 100),
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: (id) => base44.entities.TeamMember.delete(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["teamMembers"] });
-    },
-  });
-
-  const handleEdit = (member) => {
-    setEditingMember(member);
-    setShowForm(true);
-  };
-
-  const handleDelete = async (member) => {
-    if (confirm(`Delete ${member.name}?`)) {
-      deleteMutation.mutate(member.id);
-    }
-  };
-
-  const handleFormSuccess = () => {
-    setShowForm(false);
-    setEditingMember(null);
-    queryClient.invalidateQueries({ queryKey: ["teamMembers"] });
-  };
-
-  const isAdmin = user?.role === "admin";
   return (
     <div>
       {/* Hero Section */}
@@ -89,50 +85,19 @@ export default function Team() {
       {/* Team Grid */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          {isAdmin && (
-            <div className="mb-8 flex justify-end">
-              <Button
-                onClick={() => {
-                  setEditingMember(null);
-                  setShowForm(true);
-                }}
-                className="bg-[#1e3a5f] hover:bg-[#2a4a6f]"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                Add Team Member
-              </Button>
-            </div>
-          )}
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
-                key={member.id}
+                key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group relative"
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                {isAdmin && (
-                  <div className="absolute top-4 right-4 z-10 flex gap-2">
-                    <button
-                      onClick={() => handleEdit(member)}
-                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100"
-                    >
-                      <Pencil className="w-4 h-4 text-[#1e3a5f]" />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(member)}
-                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-50"
-                    >
-                      <Trash2 className="w-4 h-4 text-red-600" />
-                    </button>
-                  </div>
-                )}
                 <div className="relative h-72 overflow-hidden">
                   <img
-                    src={member.image_url}
+                    src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -148,17 +113,6 @@ export default function Team() {
           </div>
         </div>
       </section>
-
-      {showForm && (
-        <TeamMemberForm
-          member={editingMember}
-          onSuccess={handleFormSuccess}
-          onCancel={() => {
-            setShowForm(false);
-            setEditingMember(null);
-          }}
-        />
-      )}
 
       {/* Join the Team */}
       <section className="py-24 bg-gray-50">
