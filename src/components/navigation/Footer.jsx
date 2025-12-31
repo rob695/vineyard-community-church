@@ -23,7 +23,7 @@ export default function Footer() {
               <p className="text-white/50 text-xs tracking-[0.2em] mt-1">COMMUNITY CHURCH</p>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
-              A welcoming community where everyone belongs. No perfect people allowed.
+              A welcoming community where everyone belongs.
             </p>
             <div className="flex gap-4 mt-6">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#d4a853] transition-colors">
