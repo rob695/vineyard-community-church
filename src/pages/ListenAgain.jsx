@@ -126,32 +126,37 @@ export default function ListenAgain() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                
+                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+
                 {/* Series Header */}
                 <button
                   onClick={() => toggleSeries(series)}
-                  className="w-full p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                  className="w-full p-8 flex items-center justify-between bg-gradient-to-r from-[#1e3a5f] to-[#2a4a6f] hover:from-[#2a4a6f] hover:to-[#1e3a5f] transition-all duration-300 group">
                   <div className="text-left">
-                    <h2 className="text-2xl font-semibold text-[#1e3a5f] mb-1">
+                    <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-[#fde1a1] transition-colors">
                       {series}
-                      <span className="text-sm text-gray-500 ml-2">
-                        ({seriesTeachings.length} teaching{seriesTeachings.length !== 1 ? 's' : ''})
-                      </span>
                     </h2>
-                    <p className="text-sm text-gray-600">
-                      Latest: {new Date(seriesTeachings[0].date).toLocaleDateString('en-GB', { 
-                        day: 'numeric', 
-                        month: 'long', 
-                        year: 'numeric' 
-                      })}
-                    </p>
+                    <div className="flex items-center gap-4 text-white/80">
+                      <span className="flex items-center gap-1 text-sm bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+                        <Play className="w-3 h-3" />
+                        {seriesTeachings.length} teaching{seriesTeachings.length !== 1 ? 's' : ''}
+                      </span>
+                      <span className="text-sm">
+                        Latest: {new Date(seriesTeachings[0].date).toLocaleDateString('en-GB', { 
+                          day: 'numeric', 
+                          month: 'short', 
+                          year: 'numeric' 
+                        })}
+                      </span>
+                    </div>
                   </div>
-                  {expandedSeries[series] ? (
-                    <ChevronUp className="w-6 h-6 text-gray-400" />
-                  ) : (
-                    <ChevronDown className="w-6 h-6 text-gray-400" />
-                  )}
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm group-hover:bg-[#d4a853] transition-all duration-300">
+                    {expandedSeries[series] ? (
+                      <ChevronUp className="w-6 h-6 text-white" />
+                    ) : (
+                      <ChevronDown className="w-6 h-6 text-white" />
+                    )}
+                  </div>
                 </button>
 
                 {/* Teachings in Series */}
