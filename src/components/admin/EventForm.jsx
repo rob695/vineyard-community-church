@@ -6,14 +6,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { base44 } from "@/api/base44Client";
 
 export default function EventForm({ event, onSave, onCancel }) {
-  const [formData, setFormData] = useState({
-    title: event?.title || "",
-    date: event?.date || "",
-    time: event?.time || "",
-    location: event?.location || "",
-    description: event?.description || "",
-    image_url: event?.image_url || "",
-    recurring: event?.recurring || false
+  const [formData, setFormData] = useState(event || {
+    title: "",
+    date: "",
+    time: "",
+    location: "",
+    description: "",
+    image_url: "",
+    recurring: false
   });
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
