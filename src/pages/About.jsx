@@ -15,7 +15,7 @@ const values = [
 },
 {
   icon: Users,
-  title: "Everyone Belongs",
+  title: "Come As You Are",
   description: "We welcome all people regardless of background, creating space for everyone to encounter God."
 },
 {
