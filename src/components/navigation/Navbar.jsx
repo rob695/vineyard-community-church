@@ -19,6 +19,7 @@ const navItems = [
     label: "Get Connected",
     children: [
       { label: "Life Groups", page: "LifeGroups" },
+      { label: "Listen Again", page: "ListenAgain" },
       { label: "Sunday Gathering", page: "Sunday" },
     ],
   },
