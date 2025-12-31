@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Heart, BookOpen, Users, Globe } from "lucide-react";
+import { Heart, BookOpen, Users, Globe, Home, Music, Sparkles } from "lucide-react";
 
 const values = [
 {
@@ -22,6 +22,21 @@ const values = [
   icon: Globe,
   title: "Serving Others",
   description: "We're passionate about serving our community and making a difference in the world around us."
+},
+{
+  icon: Home,
+  title: "Informal",
+  description: "Reflected in the place where we meet, the format of our services, how we teach and speak."
+},
+{
+  icon: Music,
+  title: "Contemporary",
+  description: "How we approach corporate worship, use of more modern version of the Bible."
+},
+{
+  icon: Sparkles,
+  title: "Naturally-Supernatural",
+  description: "No hype, dialling down of emotionalism and enthusiasm."
 }];
 
 
