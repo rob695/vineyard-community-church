@@ -74,7 +74,7 @@ export default function LifeGroups() {
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/f50d86e0f_life_groups_logo.png"
               alt="Life Groups"
-              className="w-[250px] mx-auto"
+              className="w-[350px] mx-auto"
             />
           </motion.div>
           <motion.p
