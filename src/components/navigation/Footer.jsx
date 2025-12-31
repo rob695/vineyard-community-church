@@ -122,9 +122,10 @@ export default function Footer() {
             <p className="text-white/50 text-sm">
             © 2026 Vineyard Community Church, Daventry is a registered charity (No: 1128805). 'VINEYARD' is a United Kingdom and European Union trade mark registered to Vineyard Churches UK & Ireland. The 'VINEYARD CHURCHES' logo, Vineyard 'grapes' device and 'VINEYARD' with 'grapes' device logo are all registered trade marks of Vineyard Churches UK & Ireland. Used here under license. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Terms of Use</a>
+            <div className="flex gap-6">
+              <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Privacy Policy</a>
+              <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Terms of Use</a>
+            </div>
           </div>
         </div>
       </div>
