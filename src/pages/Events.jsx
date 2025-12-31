@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
 import { format, addDays, addWeeks } from "date-fns";
+import { base44 } from "@/api/base44Client";
+import { useQuery } from "@tanstack/react-query";
 
-const upcomingEvents = [
+const staticEvents = [
   {
     title: "Sunday Service",
     date: addDays(new Date(), 0),
@@ -14,15 +16,6 @@ const upcomingEvents = [
     description: "Join us for worship, teaching, and community. All are welcome!",
     recurring: true,
     image: "https://images.unsplash.com/photo-1470019693664-1d202d2c0907?w=600&q=80",
-  },
-  {
-    title: "Newcomers' Lunch",
-    date: addWeeks(new Date(), 2),
-    time: "12:30 PM",
-    location: "Church Building",
-    description: "A special lunch for those new to Vineyard. Meet the team and find out more.",
-    recurring: false,
-    image: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=600&q=80",
   },
   {
     title: "Youth Night",
@@ -63,6 +56,22 @@ const upcomingEvents = [
 ];
 
 export default function Events() {
+  const { data: lunchEvents = [] } = useQuery({
+    queryKey: ["lunchEvents"],
+    queryFn: () => base44.entities.NewcomersLunchEvent.filter({ is_active: true }, "date"),
+  });
+
+  const lunchEventsFormatted = lunchEvents.map(event => ({
+    title: event.title,
+    date: new Date(event.date),
+    time: event.time,
+    location: event.location,
+    description: event.description,
+    recurring: false,
+    image: event.image_url || "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=600&q=80",
+  }));
+
+  const upcomingEvents = [...staticEvents, ...lunchEventsFormatted].sort((a, b) => a.date - b.date);
   return (
     <div>
       {/* Hero Section */}
