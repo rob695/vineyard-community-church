@@ -12,27 +12,18 @@ export default function Footer() {
           <div>
             <div className="mb-6">
             <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/8e41f6db6_VineyardLogo1.png"
-                alt="Vineyard Community Church"
-                className="w-[170px] md:w-[170px]" />
-
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/8e41f6db6_VineyardLogo1.png"
+            alt="Vineyard Community Church"
+            className="w-[170px] md:w-[170px]"
+          />
               <span className="text-white font-light tracking-[0.3em] text-xl">
               
         
               </span>
               <p className="text-white/50 text-xs tracking-[0.2em] mt-1">COMMUNITY CHURCH</p>
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/4b81e79fc_affilliation.png" 
-                alt="Affiliation" 
-                className="h-12 mt-4"
-              />
-              <div className="flex gap-4 mt-4">
-                <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Privacy Policy</a>
-                <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Terms of Use</a>
-              </div>
             </div>
-            <p className="text-white/70 text-sm leading-relaxed">A welcoming community where everyone belongs.
-
+            <p className="text-white/70 text-sm leading-relaxed">
+              A welcoming community where everyone belongs. No perfect people allowed.
             </p>
             <div className="flex gap-4 mt-6">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#d4a853] transition-colors">
@@ -52,20 +43,20 @@ export default function Footer() {
             <h4 className="text-[#d4a853] font-semibold mb-6 tracking-wide">Quick Links</h4>
             <ul className="space-y-3">
               {[
-              { label: "About Us", page: "About" },
-              { label: "Life Groups", page: "LifeGroups" },
-              { label: "Events", page: "Events" },
-              { label: "Contact", page: "Contact" }].
-              map((link, index) =>
-              <li key={index}>
+                { label: "About Us", page: "About" },
+                { label: "Life Groups", page: "LifeGroups" },
+                { label: "Events", page: "Events" },
+                { label: "Contact", page: "Contact" },
+              ].map((link, index) => (
+                <li key={index}>
                   <Link
-                  to={createPageUrl(link.page)}
-                  className="text-white/70 hover:text-[#d4a853] transition-colors text-sm">
-
+                    to={createPageUrl(link.page)}
+                    className="text-white/70 hover:text-[#d4a853] transition-colors text-sm"
+                  >
                     {link.label}
                   </Link>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
 
@@ -119,12 +110,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-12 pt-8 text-center">
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/50 text-sm">
             © 2026 Vineyard Community Church, Daventry is a registered charity (No: 1128805). 'VINEYARD' is a United Kingdom and European Union trade mark registered to Vineyard Churches UK & Ireland. The 'VINEYARD CHURCHES' logo, Vineyard 'grapes' device and 'VINEYARD' with 'grapes' device logo are all registered trade marks of Vineyard Churches UK & Ireland. Used here under license. All rights reserved.
           </p>
+          <div className="flex gap-6">
+            <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Privacy Policy</a>
+            <a href="#" className="text-white/50 hover:text-white/70 text-sm transition-colors">Terms of Use</a>
+          </div>
         </div>
       </div>
-    </footer>);
-
+    </footer>
+  );
 }
