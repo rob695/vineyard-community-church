@@ -250,98 +250,162 @@ export default function NewcomersLunch() {
           )}
 
           {events.length > 0 ? (
-            <div className="space-y-6">
-              {events.map((event, index) => (
-                <motion.div
-                  key={event.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-3xl shadow-xl overflow-hidden"
-                >
-                  <div className="grid md:grid-cols-2">
-                    <div className="p-10 md:p-12">
-                      <h2 className="text-3xl font-bold text-[#1e3a5f] mb-8">{event.title}</h2>
-                      <div className="space-y-6">
-                        <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <Calendar className="w-6 h-6 text-[#d4a853]" />
+            <div className="space-y-8">
+              {events.map((event, index) => {
+                const eventSignups = allSignups.filter(s => s.event_id === event.id);
+                return (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="space-y-4"
+                  >
+                    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+                      <div className="grid md:grid-cols-2">
+                        <div className="p-10 md:p-12">
+                          <h2 className="text-3xl font-bold text-[#1e3a5f] mb-8">{event.title}</h2>
+                          <div className="space-y-6">
+                            <div className="flex items-start gap-4">
+                              <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <Calendar className="w-6 h-6 text-[#d4a853]" />
+                              </div>
+                              <div>
+                                <h3 className="font-semibold text-[#1e3a5f] mb-1">Date</h3>
+                                <p className="text-gray-600">
+                                  {new Date(event.date).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                              <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <Users className="w-6 h-6 text-[#d4a853]" />
+                              </div>
+                              <div>
+                                <h3 className="font-semibold text-[#1e3a5f] mb-1">Time & Location</h3>
+                                <p className="text-gray-600">{event.time}<br />{event.location}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                              <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <MessageCircle className="w-6 h-6 text-[#d4a853]" />
+                              </div>
+                              <div>
+                                <h3 className="font-semibold text-[#1e3a5f] mb-1">RSVP</h3>
+                                <p className="text-gray-600">{event.description}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="font-semibold text-[#1e3a5f] mb-1">Date</h3>
-                            <p className="text-gray-600">
-                              {new Date(event.date).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <Users className="w-6 h-6 text-[#d4a853]" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-[#1e3a5f] mb-1">Time & Location</h3>
-                            <p className="text-gray-600">{event.time}<br />{event.location}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <MessageCircle className="w-6 h-6 text-[#d4a853]" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-[#1e3a5f] mb-1">RSVP</h3>
-                            <p className="text-gray-600">{event.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex gap-3 mt-8">
-                        <Button
-                          onClick={() => {
-                            setEditingEvent(event);
-                            setShowSignupForm(true);
-                          }}
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1e3a5f] hover:bg-[#2a4a6f] text-white font-semibold rounded-full transition-all duration-300"
-                        >
-                          Sign Up
-                          <ArrowRight className="w-5 h-5" />
-                        </Button>
-                        {isAdmin && (
-                          <>
+                          <div className="flex gap-3 mt-8">
                             <Button
                               onClick={() => {
                                 setEditingEvent(event);
-                                setShowEventForm(true);
+                                setShowSignupForm(true);
                               }}
-                              variant="outline"
-                              className="px-6 py-4 rounded-full"
+                              className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1e3a5f] hover:bg-[#2a4a6f] text-white font-semibold rounded-full transition-all duration-300"
                             >
-                              <Pencil className="w-5 h-5" />
+                              Sign Up
+                              <ArrowRight className="w-5 h-5" />
                             </Button>
-                            <Button
-                              onClick={async () => {
-                                if (confirm("Are you sure you want to delete this event?")) {
-                                  await deleteEventMutation.mutateAsync(event.id);
-                                }
-                              }}
-                              variant="destructive"
-                              className="px-6 py-4 rounded-full"
-                            >
-                              <Trash2 className="w-5 h-5" />
-                            </Button>
-                          </>
-                        )}
+                            {isAdmin && (
+                              <>
+                                <Button
+                                  onClick={() => {
+                                    setEditingEvent(event);
+                                    setShowEventForm(true);
+                                  }}
+                                  variant="outline"
+                                  className="px-6 py-4 rounded-full"
+                                >
+                                  <Pencil className="w-5 h-5" />
+                                </Button>
+                                <Button
+                                  onClick={async () => {
+                                    if (confirm("Are you sure you want to delete this event?")) {
+                                      await deleteEventMutation.mutateAsync(event.id);
+                                    }
+                                  }}
+                                  variant="destructive"
+                                  className="px-6 py-4 rounded-full"
+                                >
+                                  <Trash2 className="w-5 h-5" />
+                                </Button>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                        <div className="relative h-64 md:h-auto">
+                          <img
+                            src={event.image_url || "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"}
+                            alt="Food"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div className="relative h-64 md:h-auto">
-                      <img
-                        src={event.image_url || "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"}
-                        alt="Food"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Event Signups for Admin */}
+                    {isAdmin && eventSignups.length > 0 && (
+                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div className="p-6 bg-gray-50 border-b">
+                          <h3 className="text-lg font-semibold text-[#1e3a5f]">
+                            Signups ({eventSignups.length})
+                          </h3>
+                        </div>
+                        <div className="overflow-x-auto">
+                          <table className="w-full">
+                            <thead className="bg-gray-50 border-b">
+                              <tr>
+                                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Name</th>
+                                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+                                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Allergies/Dietary</th>
+                                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
+                                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y">
+                              {eventSignups.map((signup) => (
+                                <tr key={signup.id} className="hover:bg-gray-50">
+                                  <td className="px-6 py-3 text-sm text-gray-900">{signup.full_name}</td>
+                                  <td className="px-6 py-3 text-sm text-gray-600">
+                                    <a href={`mailto:${signup.email}`} className="hover:text-[#d4a853]">
+                                      {signup.email}
+                                    </a>
+                                  </td>
+                                  <td className="px-6 py-3 text-sm text-gray-600">
+                                    {signup.allergies || <span className="text-gray-400">None</span>}
+                                  </td>
+                                  <td className="px-6 py-3">
+                                    <select
+                                      value={signup.status}
+                                      onChange={(e) => updateSignupMutation.mutate({ id: signup.id, status: e.target.value })}
+                                      className="text-sm border border-gray-300 rounded px-2 py-1"
+                                    >
+                                      <option value="pending">Pending</option>
+                                      <option value="confirmed">Confirmed</option>
+                                      <option value="cancelled">Cancelled</option>
+                                    </select>
+                                  </td>
+                                  <td className="px-6 py-3">
+                                    <Button
+                                      size="sm"
+                                      variant="destructive"
+                                      onClick={() => handleDeleteSignup(signup.id)}
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                    </Button>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           ) : (
             <div className="bg-white rounded-3xl shadow-xl p-12 text-center">
@@ -366,75 +430,7 @@ export default function NewcomersLunch() {
         </div>
       </section>
 
-      {/* Admin Signups Management */}
-      {isAdmin && allSignups.length > 0 && (
-        <section className="py-24 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-light text-[#1e3a5f]">
-                All Event Signups <span className="text-[#d4a853]">({allSignups.length})</span>
-              </h2>
-            </div>
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gray-50 border-b">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Event</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Name</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Email</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Allergies/Dietary</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Status</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y">
-                    {allSignups.map((signup) => {
-                      const signupEvent = events.find(e => e.id === signup.event_id);
-                      return (
-                        <tr key={signup.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 text-sm text-gray-900 font-medium">
-                            {signupEvent?.title || 'Unknown Event'}
-                          </td>
-                          <td className="px-6 py-4 text-sm text-gray-900">{signup.full_name}</td>
-                          <td className="px-6 py-4 text-sm text-gray-600">
-                            <a href={`mailto:${signup.email}`} className="hover:text-[#d4a853]">
-                              {signup.email}
-                            </a>
-                          </td>
-                          <td className="px-6 py-4 text-sm text-gray-600">
-                            {signup.allergies || <span className="text-gray-400">None</span>}
-                          </td>
-                          <td className="px-6 py-4">
-                            <select
-                              value={signup.status}
-                              onChange={(e) => updateSignupMutation.mutate({ id: signup.id, status: e.target.value })}
-                              className="text-sm border border-gray-300 rounded px-2 py-1"
-                            >
-                              <option value="pending">Pending</option>
-                              <option value="confirmed">Confirmed</option>
-                              <option value="cancelled">Cancelled</option>
-                            </select>
-                          </td>
-                          <td className="px-6 py-4">
-                            <Button
-                              size="sm"
-                              variant="destructive"
-                              onClick={() => handleDeleteSignup(signup.id)}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </Button>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+
 
       {/* Signup Success Message */}
       {signupSuccess && (
