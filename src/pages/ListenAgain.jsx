@@ -161,9 +161,9 @@ export default function ListenAgain() {
 
                 {/* Teachings in Series */}
                 {expandedSeries[series] && (
-                  <div className="border-t border-gray-200">
+                  <div className="bg-white">
                     {seriesTeachings.map((teaching, idx) => (
-                      <div key={teaching.id} className={`p-6 ${idx !== 0 ? 'border-t border-gray-100' : ''}`}>
+                      <div key={teaching.id} className={`p-8 ${idx !== 0 ? 'border-t border-gray-100' : ''}`}>
                         <div className="grid lg:grid-cols-2 gap-6">
                           {/* Video */}
                           <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden">
