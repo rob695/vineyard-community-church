@@ -238,6 +238,19 @@ export default function NewcomersLunch() {
                 Edit Event
               </Button>
               <Button
+                onClick={async () => {
+                  if (activeEvent && confirm("Are you sure you want to delete this event?")) {
+                    await deleteEventMutation.mutateAsync(activeEvent.id);
+                  }
+                }}
+                variant="destructive"
+                className="gap-2"
+                disabled={!activeEvent}
+              >
+                <Trash2 className="w-4 h-4" />
+                Delete Event
+              </Button>
+              <Button
                 onClick={() => {
                   setEditingEvent(null);
                   setShowEventForm(true);
@@ -273,6 +286,7 @@ export default function NewcomersLunch() {
             >
               <div className="grid md:grid-cols-2">
                 <div className="p-10 md:p-12">
+                  <h2 className="text-3xl font-bold text-[#1e3a5f] mb-8">{activeEvent.title}</h2>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-[#d4a853]/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -323,7 +337,10 @@ export default function NewcomersLunch() {
             </motion.div>
           ) : (
             <div className="bg-white rounded-3xl shadow-xl p-12 text-center">
-              <p className="text-gray-600 text-lg">No upcoming lunch event scheduled yet.</p>
+              <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-2xl font-light text-[#1e3a5f] mb-3">No Events Currently Planned</h3>
+              <p className="text-gray-600 text-lg mb-2">We're working on scheduling our next Newcomers' Lunch.</p>
+              <p className="text-gray-500">Please check back soon for upcoming dates!</p>
               {isAdmin && (
                 <Button
                   onClick={() => {
