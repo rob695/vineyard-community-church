@@ -54,7 +54,7 @@ export default function LifeGroups() {
             alt="Life Groups"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-orange-700/80 via-orange-600/70 to-orange-700/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/80 via-[#1e3a5f]/70 to-[#1e3a5f]/90" />
         </div>
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <motion.span
