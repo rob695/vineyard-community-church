@@ -8,6 +8,7 @@ import LifeGroups from './pages/LifeGroups';
 import NewcomersLunch from './pages/NewcomersLunch';
 import Sunday from './pages/Sunday';
 import Team from './pages/Team';
+import ListenAgain from './pages/ListenAgain';
 import __Layout from './Layout.jsx';
 
 
@@ -22,6 +23,7 @@ export const PAGES = {
     "NewcomersLunch": NewcomersLunch,
     "Sunday": Sunday,
     "Team": Team,
+    "ListenAgain": ListenAgain,
 }
 
 export const pagesConfig = {
