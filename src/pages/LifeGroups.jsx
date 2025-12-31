@@ -50,7 +50,7 @@ export default function LifeGroups() {
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1758270704763-22072a90d3b6?w=1920&q=80"
             alt="Life Groups"
             className="w-full h-full object-cover" />
 
