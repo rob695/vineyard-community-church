@@ -113,7 +113,7 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex justify-center mb-6">
             <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/7fa974bdb_Vineyard_Global.jpg" 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/43ee411cd_affilliation.png" 
               alt="Vineyard Global Affiliation" 
               className="h-16 object-contain opacity-70"
             />
