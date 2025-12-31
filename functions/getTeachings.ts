@@ -38,9 +38,14 @@ Deno.serve(async (req) => {
 
     const teachings = await teachingsResponse.json();
 
+    console.log("Teachings response:", JSON.stringify(teachings, null, 2));
+
+    // The Base44 API returns data in a 'data' property
+    const teachingsList = Array.isArray(teachings) ? teachings : (teachings.data || []);
+
     return Response.json({ 
       success: true,
-      teachings: teachings || []
+      teachings: teachingsList
     });
 
   } catch (error) {
