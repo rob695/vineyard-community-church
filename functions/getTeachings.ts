@@ -10,22 +10,21 @@ Deno.serve(async (req) => {
       // Allow public access - no authentication required
     }
 
-    const PARENT_PROJECT_API_KEY = Deno.env.get("PARENT_PROJECT_API_KEY");
-    if (!PARENT_PROJECT_API_KEY) {
+    const parentProjectId = '69000e8259035103bafa3063';
+    const parentApiKey = Deno.env.get("PARENT_PROJECT_API_KEY");
+    
+    if (!parentApiKey) {
       return Response.json({ 
         error: "Parent project API key not configured" 
       }, { status: 500 });
     }
 
-    // Fetch teachings from parent project using the SDK
-    const parentProjectId = PARENT_PROJECT_API_KEY.split('_')[0]; // Extract project ID from API key
-    
+    // Fetch teachings from parent project
     const teachingsResponse = await fetch(
-      `https://api.base44.com/api/apps/${parentProjectId}/entities/Teaching/records?sort=-date`,
+      `https://app.base44.com/api/apps/${parentProjectId}/entities/Teaching`,
       {
-        method: "GET",
         headers: {
-          "Authorization": `Bearer ${PARENT_PROJECT_API_KEY}`,
+          "Authorization": `Bearer ${parentApiKey}`,
           "Content-Type": "application/json"
         }
       }
@@ -39,15 +38,11 @@ Deno.serve(async (req) => {
       }, { status: teachingsResponse.status });
     }
 
-    const responseData = await teachingsResponse.json();
-    console.log("Full response:", JSON.stringify(responseData, null, 2));
-
-    // Extract the teachings array from the response
-    const teachingsList = responseData.data || responseData || [];
+    const teachings = await teachingsResponse.json();
 
     return Response.json({ 
       success: true,
-      teachings: teachingsList
+      teachings: teachings
     });
 
   } catch (error) {
