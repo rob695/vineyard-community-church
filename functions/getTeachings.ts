@@ -17,9 +17,11 @@ Deno.serve(async (req) => {
       }, { status: 500 });
     }
 
-    // Fetch teachings from parent project
+    // Fetch teachings from parent project using the SDK
+    const parentProjectId = PARENT_PROJECT_API_KEY.split('_')[0]; // Extract project ID from API key
+    
     const teachingsResponse = await fetch(
-      "https://api.base44.com/api/entity/Teaching?sort=-date",
+      `https://api.base44.com/api/apps/${parentProjectId}/entities/Teaching/records?sort=-date`,
       {
         method: "GET",
         headers: {
@@ -31,17 +33,17 @@ Deno.serve(async (req) => {
 
     if (!teachingsResponse.ok) {
       const errorText = await teachingsResponse.text();
+      console.error("Failed to fetch teachings:", teachingsResponse.status, errorText);
       return Response.json({ 
         error: `Failed to fetch teachings: ${errorText}` 
       }, { status: teachingsResponse.status });
     }
 
-    const teachings = await teachingsResponse.json();
+    const responseData = await teachingsResponse.json();
+    console.log("Full response:", JSON.stringify(responseData, null, 2));
 
-    console.log("Teachings response:", JSON.stringify(teachings, null, 2));
-
-    // The Base44 API returns data in a 'data' property
-    const teachingsList = Array.isArray(teachings) ? teachings : (teachings.data || []);
+    // Extract the teachings array from the response
+    const teachingsList = responseData.data || responseData || [];
 
     return Response.json({ 
       success: true,
