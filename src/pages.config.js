@@ -5,10 +5,10 @@ import Events from './pages/Events';
 import Home from './pages/Home';
 import KindnessProjects from './pages/KindnessProjects';
 import LifeGroups from './pages/LifeGroups';
+import ListenAgain from './pages/ListenAgain';
 import NewcomersLunch from './pages/NewcomersLunch';
 import Sunday from './pages/Sunday';
 import Team from './pages/Team';
-import ListenAgain from './pages/ListenAgain';
 import __Layout from './Layout.jsx';
 
 
@@ -20,10 +20,10 @@ export const PAGES = {
     "Home": Home,
     "KindnessProjects": KindnessProjects,
     "LifeGroups": LifeGroups,
+    "ListenAgain": ListenAgain,
     "NewcomersLunch": NewcomersLunch,
     "Sunday": Sunday,
     "Team": Team,
-    "ListenAgain": ListenAgain,
 }
 
 export const pagesConfig = {

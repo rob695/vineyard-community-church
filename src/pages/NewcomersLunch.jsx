@@ -4,6 +4,7 @@ import { Utensils, Calendar, Users, MessageCircle, ArrowRight, CheckCircle, Plus
 import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import LunchEventForm from "@/components/admin/LunchEventForm";
 import SignupForm from "@/components/lunch/SignupForm";
 
@@ -236,8 +237,16 @@ export default function NewcomersLunch() {
             </div>
           )}
 
-          {showEventForm && (
-            <div className="mb-12">
+          <Dialog open={showEventForm} onOpenChange={(open) => {
+            setShowEventForm(open);
+            if (!open) setEditingEvent(null);
+          }}>
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-light text-[#1e3a5f]">
+                  {editingEvent ? 'Edit Event' : 'Create New Event'}
+                </DialogTitle>
+              </DialogHeader>
               <LunchEventForm
                 event={editingEvent}
                 onSave={handleSaveEvent}
@@ -246,8 +255,8 @@ export default function NewcomersLunch() {
                   setEditingEvent(null);
                 }}
               />
-            </div>
-          )}
+            </DialogContent>
+          </Dialog>
 
           {events.length > 0 ? (
             <div className="space-y-8">
