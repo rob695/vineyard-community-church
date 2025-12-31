@@ -75,7 +75,7 @@ export default function LifeGroups() {
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69526b0f26e9efd0556a4774/f50d86e0f_life_groups_logo.png"
               alt="Life Groups"
               className="w-[350px] mx-auto"
-              style={{ filter: 'brightness(1.7)' }}
+              style={{ filter: 'brightness(2.2)' }}
             />
           </motion.div>
           <motion.p
